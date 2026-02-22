@@ -2,6 +2,17 @@
 
 Analog clock app with a list of timezones to select, with offline-first approach. Save the list in db.
 
+## Screenshots
+
+<!-- Add your screenshot files to the `screenshots/` folder, then reference them like this: -->
+
+![Analog Clock App](screenshots/analog-clock.png)
+![Saerch for time zone](screenshots/search.png)
+
+<!-- You can add more images:
+![Description](screenshots/another-screenshot.png)
+-->
+
 ---
 
 This is a [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
