@@ -1,114 +1,96 @@
-# Analog-Clock-App
+# Analog Clock App
 
-Analog clock app with a list of timezones to select, with offline-first approach. Save the list in db.
+A **React Native** app that shows a live analog clock for any time zone. Pick a time zone from a searchable list; the app works **offline-first** by caching time zone data and your last selection in SQLite.
 
 ## Screenshots
 
-<!-- Add your screenshot files to the `screenshots/` folder, then reference them like this: -->
-
 ![Analog Clock App](screenshots/analog-clock.png)
-![Saerch for time zone](screenshots/search.png)
-
-<!-- You can add more images:
-![Description](screenshots/another-screenshot.png)
--->
+![Search for time zone](screenshots/search.png)
 
 ---
 
-This is a [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## About the Project
 
-# Getting Started
+This is a [React Native](https://reactnative.dev) project. The clock is built with custom components (no third-party clock widgets). Time zone data comes from the [TimeZoneDB API](https://timezonedb.com/api) and is stored locally so the app works without internet after the first load.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features & Functionality
 
-## Step 1: Start Metro
+- **Analog clock** – Hour, minute, and second hands; updates every second and resizes with device/orientation.
+- **Time zone selector** – List of time zones (from TimeZoneDB). Tap one to show that zone’s time on the clock.
+- **Search** – Filter the list by zone name or country name (e.g. “New York”, “London”, “India”).
+- **Offline-first** – Time zone list is cached in SQLite. On launch the app reads from the database first; the API is used only when the cache is empty or missing. After one successful fetch, the app works offline.
+- **Persisted selection** – Last selected time zone is saved in the database and restored on next launch. If nothing is saved, the device’s current time zone is used.
+- **DB status indicator** – Shows whether data is from the device cache (“stored”), cache is empty, or the database is unavailable.
+- **Refetch** – If the API fails, an error message is shown with a “Refetch” button to try again.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## How to Run
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Prerequisites
+
+- **Node.js** ≥ 18
+- [React Native environment](https://reactnative.dev/docs/set-up-your-environment) set up (Android Studio / Xcode, emulator or device, etc.)
+- **Yarn** or **npm**
+
+### Install dependencies
+
+From the project root:
 
 ```sh
-# Using npm
-npm start
+yarn install
+# or: npm install
+```
 
-# OR using Yarn
+### Start Metro
+
+In one terminal, start the Metro bundler:
+
+```sh
 yarn start
+# or: npm start
 ```
 
-## Step 2: Build and run your app
+### Run on device / emulator
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+With Metro running, open a **second** terminal and run:
 
-### Android
+**Android**
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
 yarn android
+# or: npm run android
 ```
 
-### iOS
+**iOS** (macOS only)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Install CocoaPods dependencies first (on first clone or after changing native deps):
 
 ```sh
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Then run:
 
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
+# or: npm run ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+The app will open in the Android Emulator, iOS Simulator, or a connected device. You can also build and run from **Android Studio** or **Xcode** if you prefer.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Reload the app
 
-## Step 3: Modify your app
+- **Android**: Double-tap <kbd>R</kbd> or open the dev menu (<kbd>Ctrl</kbd>+<kbd>M</kbd> / <kbd>Cmd</kbd>+<kbd>M</kbd>) → **Reload**.
+- **iOS**: Press <kbd>R</kbd> in the simulator.
 
-Now that you have successfully run the app, let's make changes!
+---
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — it's powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Troubleshooting
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+If you run into setup or run issues, see the official [Troubleshooting](https://reactnative.dev/docs/troubleshooting) guide.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Learn More
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- [React Native – Get started](https://reactnative.dev/docs/getting-started)
+- [React Native – Environment setup](https://reactnative.dev/docs/environment-setup)
+- [React Native GitHub](https://github.com/facebook/react-native)
