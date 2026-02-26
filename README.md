@@ -2,10 +2,14 @@
 
 A **React Native** app that shows a live analog clock for any time zone. Pick a time zone from a searchable list; the app works **offline-first** by caching time zone data and your last selection in SQLite.
 
-## Screenshots
+## Screenshots & Video
 
 ![Analog Clock App](screenshots/analog-clock.png)
 ![Search for time zone](screenshots/search.png)
+
+### Demo video
+
+[Watch demo](https://www.youtube.com/shorts/kjg49oHbN9k)
 
 ---
 

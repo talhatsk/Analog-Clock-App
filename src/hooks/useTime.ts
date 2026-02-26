@@ -3,10 +3,10 @@
  * Updates every second so the clock runs in real time.
  */
 
-import { useState, useEffect } from 'react';
-import type { ClockTime } from '../types';
+import {useState, useEffect} from 'react';
+import type {ClockTime} from '../types';
 
-function getTimeInZone(timeZone: string): ClockTime {
+export function getTimeInZone(timeZone: string): ClockTime {
   const now = new Date();
   const formatter = new Intl.DateTimeFormat('en-US', {
     timeZone,
@@ -16,10 +16,10 @@ function getTimeInZone(timeZone: string): ClockTime {
     second: 'numeric',
   });
   const parts = formatter.formatToParts(now);
-  const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? 0);
-  const minute = Number(parts.find((p) => p.type === 'minute')?.value ?? 0);
-  const second = Number(parts.find((p) => p.type === 'second')?.value ?? 0);
-  return { hours: hour, minutes: minute, seconds: second };
+  const hour = Number(parts.find(p => p.type === 'hour')?.value ?? 0);
+  const minute = Number(parts.find(p => p.type === 'minute')?.value ?? 0);
+  const second = Number(parts.find(p => p.type === 'second')?.value ?? 0);
+  return {hours: hour, minutes: minute, seconds: second};
 }
 
 export function useTime(timeZone: string): ClockTime {
